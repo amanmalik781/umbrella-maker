@@ -20,16 +20,33 @@ body {
 }
 
 #umbrella-image,
-#logo-image,
-#loader-image {
+#logo-image {
     width: 500px;
     max-width: 100%;
 }
 
 #loader-image {
-    position: absolute;
+    width: 100px;
+    /* position: absolute; */
     /* transform: translate(-50%, -50%); */
 }
+
+#loader-image.rotate {
+    display: initial;
+    /* Display when active */
+    animation: rotate 3s linear infinite;
+}
+
+@keyframes rotate {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(0, 0) rotate(360deg);
+    }
+}
+
 
 #logo-image {
     position: absolute;
@@ -99,4 +116,13 @@ body {
     display: none;
 }
 
-@media screen {}
+@media (max-width: 768px) {
+    #customizer-tool {
+        flex-direction: column;
+    }
+
+    #umbrella-preview {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+}

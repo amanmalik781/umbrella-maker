@@ -21,15 +21,18 @@ document.addEventListener('DOMContentLoaded', function () {
     colorSwatches.forEach(swatch => {
         swatch.addEventListener('click', function () {
             const color = swatch.getAttribute('data-color');
-            loaderImage.style.display = 'block';
+            loaderImage.style.display = 'initial';
+            loaderImage.style.fill = color;
             umbrellaImage.style.display = 'none';
             // logoImage.style.display = 'none';
+            showLoader();
             document.body.style.backgroundColor = backgroundColors?.[color];
             uploadButton.style.backgroundColor = buttonColors?.[color];
             setTimeout(() => {
                 umbrellaImage.src = `assets/${color}_umbrella.png`;
-                umbrellaImage.style.display = 'block';
+                umbrellaImage.style.display = 'initial';
                 loaderImage.style.display = 'none';
+                hideLoader();
                 // if (logoImage.src) {
                 //     logoImage.style.display = 'block';
                 // }
@@ -61,4 +64,12 @@ document.addEventListener('DOMContentLoaded', function () {
             alert('Please upload a valid image file (PNG or JPG).');
         }
     });
+
+    function showLoader() {
+        loaderImage.classList.add('rotate');
+    }
+
+    function hideLoader() {
+        loaderImage.classList.remove('rotate');
+    }
 });
