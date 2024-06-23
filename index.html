@@ -12,7 +12,7 @@
     <div id="customizer-tool">
         <div id="umbrella-preview">
             <img id="umbrella-image" src="assets/blue_umbrella.png" alt="Umbrella">
-            <!-- <img id="logo-image" src="" alt="Logo Preview" style="display:none;"> -->
+            <img id="logo-image" src="" alt="Logo Preview" style="display:none;">
             <img id="loader-image" src="assets/loader_icon.svg" alt="Loading" style="display:none;">
         </div>
         <div id="customization-options">
@@ -28,8 +28,11 @@
                 <p>.png and .jpg files only. Max file size is 5MB.</p>
                 <input type="file" id="logo-upload" accept="image/*">
                 <button id="upload-button">
-                    <img src="assets/upload_icon.svg" alt="Upload Icon" class="upload-icon">
-                    UPLOAD LOGO
+                    <img src="assets/upload_icon.svg" alt="Upload Icon" id="upload-icon">
+                    <img src="assets/loader_icon_small.svg" alt="Loader Icon" id="loader-image-small"
+                        style="display:none;">
+                    <div id="upload-button-text">UPLOAD LOGO</div>
+                    <div id="delete-logo-icon" style="visibility: hidden;">X</div>
                 </button>
             </div>
         </div>

@@ -17,21 +17,25 @@ body {
 #umbrella-preview {
     width: 50vw;
     margin-right: 50px;
+    position: relative;
 }
 
-#umbrella-image,
-#logo-image {
+#umbrella-image {
     width: 500px;
     max-width: 100%;
 }
 
 #loader-image {
     width: 100px;
-    /* position: absolute; */
-    /* transform: translate(-50%, -50%); */
 }
 
 #loader-image.rotate {
+    display: initial;
+    /* Display when active */
+    animation: rotate 3s linear infinite;
+}
+
+#loader-image-small.rotate {
     display: initial;
     /* Display when active */
     animation: rotate 3s linear infinite;
@@ -49,10 +53,10 @@ body {
 
 
 #logo-image {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
+    position: relative;
+    bottom: 100px;
+    left: auto;
+    right: auto;
     max-width: 30%;
 }
 
@@ -101,14 +105,14 @@ body {
     border-radius: 5px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 #upload-button img {
     margin-right: 10px;
 }
 
-.upload-icon {
+#upload-icon {
     filter: invert(1);
 }
 
