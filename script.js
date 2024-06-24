@@ -26,19 +26,27 @@ document.addEventListener('DOMContentLoaded', function () {
     colorSwatches.forEach(swatch => {
         swatch.addEventListener('click', function () {
             loaderColor = swatch.getAttribute('data-color');
-            loaderImage.style.display = 'initial';
+            // hide umbrella
             umbrellaImage.style.display = 'none';
+            // display loader
+            loaderImage.style.display = 'initial';
+            showLoader(buttonColors?.[loaderColor]);
+            // hide logo if present
             if (logoImage) {
                 logoImage.style.display = 'none';
             }
-            showLoader(buttonColors?.[loaderColor]);
+            // change background color
             document.body.style.backgroundColor = backgroundColors?.[loaderColor];
+            // change upload button color
             uploadButton.style.backgroundColor = buttonColors?.[loaderColor];
             setTimeout(() => {
+                // display updated umbrella color
                 umbrellaImage.src = `assets/${loaderColor}_umbrella.png`;
                 umbrellaImage.style.display = 'initial';
+                // hide loader
                 loaderImage.style.display = 'none';
                 hideLoader();
+                // display logo if present
                 if (logoImage?.src?.length > 32) {
                     logoImage.style.display = 'initial';
                 }
@@ -59,33 +67,45 @@ document.addEventListener('DOMContentLoaded', function () {
     logoUpload.addEventListener('change', function (event) {
         const file = event.target.files[0];
         if (file && (file.type === 'image/png' || file.type === 'image/jpeg')) {
+            // read file from system
             const reader = new FileReader();
             const fileName = logoUpload.files[0].name;
+            // display loader
             loaderImage.style.display = 'initial';
+            showLoader(buttonColors?.[loaderColor]);
+            // display upload button loader
             if (loaderImageSmall) {
                 loaderImageSmall.style.display = 'initial';
             }
+            // hide umbrella image and upload logo in button
             umbrellaImage.style.display = 'none';
             uploadIcon.style.display = 'none';
-            showLoader(buttonColors?.[loaderColor]);
+            // hide logo if present
             if (logoImage) {
                 logoImage.style.display = 'none';
             }
             reader.onload = function (e) {
                 setTimeout(() => {
+                    // display uploaded logo
                     if (logoImage) {
                         logoImage.src = e.target.result;
                         logoImage.style.display = 'initial';
                     }
+                    // display umbrella
                     umbrellaImage.style.display = 'initial';
+                    // hide loader
                     loaderImage.style.display = 'none';
+                    hideLoader();
+                    // hide loader inside button
                     if (loaderImageSmall) {
                         loaderImageSmall.style.display = 'none';
                     }
+                    // display upload logo again
                     uploadIcon.style.display = 'initial';
+                    // display the delete logo icon
                     deleteLogoIcon.style.visibility = 'visible';
+                    // change the text inside the button to the file name
                     uploadButtonText.textContent = fileName;
-                    hideLoader();
                 }, 5000);
             };
             reader.readAsDataURL(file);
@@ -107,6 +127,7 @@ document.addEventListener('DOMContentLoaded', function () {
         fetch('assets/loader_icon.svg') // Path to loader SVG file
             .then(response => response.text())
             .then(svg => {
+                // change loader color acc to umbrella color
                 const coloredSvg = svg.replace(/currentColor/g, color);
                 const svgBlob = new Blob([coloredSvg], { type: 'image/svg+xml' });
                 const svgUrl = URL.createObjectURL(svgBlob);
