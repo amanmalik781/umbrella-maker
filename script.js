@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 loaderImage.style.display = 'none';
                 hideLoader();
                 // display logo if present
-                if (logoImage?.src?.length > 32) {
+                if (logoImage?.src?.length > 0) {
                     logoImage.style.display = 'initial';
                 }
             }, 1000);
