@@ -43,6 +43,12 @@ document.addEventListener('DOMContentLoaded', function () {
                     logoImage.style.display = 'initial';
                 }
             }, 1000);
+
+            // Remove the 'selected' class from all swatches
+            colorSwatches.forEach(s => s.classList.remove('selected'));
+
+            // Add the 'selected' class to the clicked swatch
+            swatch.classList.add('selected');
         });
     });
 
@@ -71,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         logoImage.src = e.target.result;
                         logoImage.style.display = 'initial';
                     }
-                    umbrellaImage.style.display = 'block';
+                    umbrellaImage.style.display = 'initial';
                     loaderImage.style.display = 'none';
                     if (loaderImageSmall) {
                         loaderImageSmall.style.display = 'none';

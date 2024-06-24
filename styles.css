@@ -91,6 +91,13 @@ body {
     background-color: rgb(255, 209, 71);
 }
 
+.color-swatch.selected {
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    /* Light border */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    /* Optional shadow for better visibility */
+}
+
 #upload-section {
     margin-top: 20px;
 }
